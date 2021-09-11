@@ -1,4 +1,4 @@
-defmodule ElixirikaMasterdata do
+defmodule ElixirikaMasterdata.Runner do
   @moduledoc """
   Documentation for `ElixirikaMasterdata`.
   """
@@ -13,7 +13,8 @@ defmodule ElixirikaMasterdata do
 
   """
 
-  def run do
-    ElixirikaMasterdata.Runner.fetch_and_push!()
+  def fetch_and_push! do
+    # 本来ここにつらつらかくようなものでもないのだけど
+    IO.puts("fetch start...")
   end
 end
