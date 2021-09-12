@@ -14,7 +14,7 @@ defmodule ElixirikaMasterdata.Runner do
   """
 
   def run_all! do
-    csv = fetch_csv(mock: true)
+    csv = fetch_csv(mock: false)
     [header | body] = NimbleCSV.RFC4180.parse_string(csv, skip_headers: false)
     json = reconstruct_to_map(header, body)
     encoded = Jason.encode!(json)
@@ -26,11 +26,12 @@ defmodule ElixirikaMasterdata.Runner do
     url = "https://docs.google.com/spreadsheets/d/1AC3XNLuCcmUG7iGHzb40zOj4b3_58cUuvA0fP9jtkxg/gviz/tq?tqx=out:csv&sheet=challenges"
     HTTPoison.start()
     %{body: body} = HTTPoison.get!(url)
+    body
   end
 
   def fetch_csv(mock: true) do
     """
-"id","title","description","type","value1","value2","value3"
+"id:integer","title:string","description:string","type:string","value1:integer","value2:integer","value3:integer"
 "1","200pt","200pt稼ごう","score","200","",""
 "2","400pt","400pt稼ごう","score","400","",""
 "3","600pt","600pt稼ごう","starPaletteKind","600","",""
@@ -50,7 +51,16 @@ defmodule ElixirikaMasterdata.Runner do
   defp do_reconstruct_to_map(header, []), do: []
 
   defp zip_one_row([index | header], [value | rest]) do
-    Map.merge(zip_one_row(header, rest) , %{index => value})
+    # ハイパーズボラインデックスアノテーション
+    # title:string みたいな感じに `カラム名:型名` を入力する
+    [index_name, type] = String.split(index, ":")
+    Map.merge(zip_one_row(header, rest) , %{index_name => parse_fn(value, type)})
   end
   defp zip_one_row([], []), do: %{}
+
+  # integer はnull を許容する
+  defp parse_fn("", "integer"), do: nil
+  defp parse_fn(value, "integer"), do: String.to_integer(value)
+  defp parse_fn(value, "string"), do: value
+  defp parse_fn(value, _), do: value
 end
