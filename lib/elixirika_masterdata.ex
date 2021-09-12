@@ -14,6 +14,6 @@ defmodule ElixirikaMasterdata do
   """
 
   def run do
-    ElixirikaMasterdata.Runner.fetch_and_push!()
+    ElixirikaMasterdata.Runner.run_all!()
   end
 end
