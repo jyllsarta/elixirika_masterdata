@@ -65,6 +65,7 @@ defmodule ElixirikaMasterdata.Runner do
   # integer はnull を許容する
   defp parse_fn("", "integer"), do: nil
   defp parse_fn(value, "integer"), do: String.to_integer(value)
+  defp parse_fn(value, "intarray"), do: Jason.decode!(value)
   defp parse_fn(value, "string"), do: value
   defp parse_fn(value, _), do: value
 
