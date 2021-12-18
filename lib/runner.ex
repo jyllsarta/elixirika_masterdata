@@ -73,6 +73,7 @@ defmodule ElixirikaMasterdata.Runner do
     [
       "challenges",
       "chapters",
+      "messages",
     ]
   end
 end
