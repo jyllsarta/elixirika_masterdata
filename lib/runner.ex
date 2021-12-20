@@ -74,6 +74,7 @@ defmodule ElixirikaMasterdata.Runner do
       "challenges",
       "chapters",
       "messages",
+      "message_priorities",
     ]
   end
 end
