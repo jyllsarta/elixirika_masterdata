@@ -14,14 +14,15 @@ defmodule ElixirikaMasterdata.Runner do
   """
 
   def run_all! do
-    for(table_name <- target_tables()) do
+    project = System.get_env("PROJECT", "square")
+    for(table_name <- target_tables(project)) do
       :timer.sleep(1000)
       IO.puts("fetching #{table_name} ...")
       csv = fetch_csv(table_name, mock: false)
       [header | body] = NimbleCSV.RFC4180.parse_string(csv, skip_headers: false)
       json = reconstruct_to_map(header, body)
       encoded = Jason.encode!(json)
-      File.write!("./js/#{table_name}.js", "module.exports = " <> encoded)
+      File.write!("./#{project}/#{table_name}.js", "module.exports = " <> encoded)
     end
   end
 
@@ -69,12 +70,18 @@ defmodule ElixirikaMasterdata.Runner do
   defp parse_fn(value, "string"), do: value
   defp parse_fn(value, _), do: value
 
-  defp target_tables do
+  defp target_tables("square") do
     [
       "challenges",
       "chapters",
       "messages",
       "message_priorities",
+    ]
+  end
+
+  defp target_tables("queens") do
+    [
+      "challenges"
     ]
   end
 end
