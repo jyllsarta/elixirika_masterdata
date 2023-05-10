@@ -15,10 +15,11 @@ defmodule ElixirikaMasterdata.Runner do
 
   def run_all! do
     project = System.get_env("PROJECT", "square")
+    sheet_id = get_sheet_id(project)
     for(table_name <- target_tables(project)) do
       :timer.sleep(1000)
       IO.puts("fetching #{table_name} ...")
-      csv = fetch_csv(table_name, mock: false)
+      csv = fetch_csv(table_name, sheet_id, mock: false)
       [header | body] = NimbleCSV.RFC4180.parse_string(csv, skip_headers: false)
       json = reconstruct_to_map(header, body)
       encoded = Jason.encode!(json)
@@ -26,9 +27,9 @@ defmodule ElixirikaMasterdata.Runner do
     end
   end
 
-  def fetch_csv(table_name, mock: false) do
+  def fetch_csv(table_name, sheet_id, mock: false) do
     # TODO: sheet_id を 環境変数、 sheet_name をスキーマ定義ファイルから取ってこれるようにする
-    url = "https://docs.google.com/spreadsheets/d/1AC3XNLuCcmUG7iGHzb40zOj4b3_58cUuvA0fP9jtkxg/gviz/tq?tqx=out:csv&sheet=#{table_name}"
+    url = "https://docs.google.com/spreadsheets/d/#{sheet_id}/gviz/tq?tqx=out:csv&sheet=#{table_name}"
     HTTPoison.start()
     %{body: body} = HTTPoison.get!(url)
     body
@@ -81,7 +82,15 @@ defmodule ElixirikaMasterdata.Runner do
 
   defp target_tables("queens") do
     [
-      "challenges"
+      "scripts"
     ]
+  end
+
+  defp get_sheet_id("square") do
+    "1AC3XNLuCcmUG7iGHzb40zOj4b3_58cUuvA0fP9jtkxg"
+  end
+
+  defp get_sheet_id("queens") do
+    "1XW4sybUwlVPOc6vTliodH3c1t9AdiKBwiPhSbkwUGYM"
   end
 end
