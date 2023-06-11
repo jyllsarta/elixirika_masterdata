@@ -82,7 +82,9 @@ defmodule ElixirikaMasterdata.Runner do
 
   defp target_tables("queens") do
     [
-      "scripts"
+      "scripts",
+      "field_effects",
+      "characters"
     ]
   end
 
