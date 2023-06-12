@@ -1,0 +1,1 @@
+module.exports = [{"id":11,"lose_character_id":null,"name":"ルール解説","quest_id":null},{"id":21,"lose_character_id":null,"name":"刻印契約","quest_id":1},{"id":22,"lose_character_id":null,"name":"オナニー解説会","quest_id":2},{"id":23,"lose_character_id":null,"name":"最終到達点","quest_id":3},{"id":24,"lose_character_id":2,"name":"奉仕させるのもヘタ","quest_id":3}]
