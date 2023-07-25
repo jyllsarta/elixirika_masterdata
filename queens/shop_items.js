@@ -1,0 +1,1 @@
+module.exports = [{"id":4,"order":1,"price":30,"quest_id":null},{"id":5,"order":2,"price":20,"quest_id":203}]
