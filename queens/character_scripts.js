@@ -1,0 +1,1 @@
+module.exports = [{"character_id":90,"id":1,"message":"ひゃあ♡","order":1,"when":"click"},{"character_id":90,"id":2,"message":"もー、そういうことするのはたくさん商品買ってからにしてくださいね","order":2,"when":"click"},{"character_id":90,"id":3,"message":"あ、こら！いい加減にしなさい！","order":3,"when":"click"}]

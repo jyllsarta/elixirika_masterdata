@@ -93,7 +93,8 @@ defmodule ElixirikaMasterdata.Runner do
       "scenes",
       "break_conditions",
       "shop_items",
-      "equipments"
+      "equipments",
+      "character_scripts"
     ]
   end
 
