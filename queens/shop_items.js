@@ -1,1 +1,1 @@
-module.exports = [{"id":4,"order":1,"price":30,"quest_id":null},{"id":5,"order":2,"price":20,"quest_id":203},{"id":6,"order":3,"price":50,"quest_id":null}]
+module.exports = [{"id":4,"order":1,"price":30,"quest_id":null},{"id":5,"order":2,"price":20,"quest_id":203},{"id":6,"order":3,"price":50,"quest_id":null},{"id":7,"order":4,"price":1000,"quest_id":203},{"id":8,"order":5,"price":1000,"quest_id":203},{"id":9,"order":6,"price":1000,"quest_id":203}]
