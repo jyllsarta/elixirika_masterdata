@@ -89,6 +89,7 @@ defmodule ElixirikaMasterdata.Runner do
       "characters",
       "field_effects",
       "skills",
+      "buffs",
       "quests",
       "scenes",
       "break_conditions",

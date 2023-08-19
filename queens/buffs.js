@@ -1,0 +1,1 @@
+module.exports = [{"effect_value":2,"id":1,"key":"draw","rest_turn":2,"title":"ドロー+2"},{"effect_value":1,"id":2,"key":"draw","rest_turn":4,"title":"ドロー+1(3T)"},{"effect_value":250,"id":3,"key":"attackDamageRate","rest_turn":2,"title":"熱血"}]
