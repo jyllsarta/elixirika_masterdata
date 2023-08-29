@@ -16,7 +16,11 @@ defmodule ElixirikaMasterdata.Runner do
   def run_all! do
     project = System.get_env("PROJECT", "square")
     sheet_id = get_sheet_id(project)
-    for(table_name <- target_tables(project)) do
+
+    only = System.get_env("ONLY", "")
+    tables = target_tables(project) |> filter_tables(only)
+
+    for(table_name <- tables) do
       :timer.sleep(1000)
       IO.puts("fetching #{table_name} ...")
       csv = fetch_csv(table_name, sheet_id, mock: false)
@@ -25,6 +29,14 @@ defmodule ElixirikaMasterdata.Runner do
       encoded = Jason.encode!(json)
       File.write!("./#{project}/#{table_name}.js", "module.exports = " <> encoded)
     end
+  end
+
+  def filter_tables(tables, "") do
+    tables
+  end
+
+  def filter_tables(tables, only) do
+    only |> String.split(",") |> Enum.filter(fn table_name -> Enum.member?(tables, table_name) end)
   end
 
   def fetch_csv(table_name, sheet_id, mock: false) do
