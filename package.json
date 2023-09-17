@@ -1,0 +1,27 @@
+{
+  "name": "elixirika_masterdata",
+  "version": "1.0.0",
+  "description": "elixirika のゲームで使うマスターデータの CSV と JSON 管理をするリポジトリだよ",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "lint": "prettier --write ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jyllsarta/elixirika-masterdata.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jyllsarta/elixirika-masterdata/issues"
+  },
+  "homepage": "https://github.com/jyllsarta/elixirika-masterdata#readme",
+  "devDependencies": {
+    "eslint": "^8.49.0",
+    "prettier": "^3.0.3"
+  }
+}
