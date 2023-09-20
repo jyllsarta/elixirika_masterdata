@@ -95,29 +95,7 @@ defmodule ElixirikaMasterdata.Runner do
     ]
   end
 
-  defp target_tables("queens") do
-    [
-      "scripts",
-      "characters",
-      "field_effects",
-      "skills",
-      "buffs",
-      "quests",
-      "scenes",
-      "break_conditions",
-      "shop_items",
-      "equipments",
-      "character_scripts",
-      "character_script_priorities",
-      "break_condition_descriptions"
-    ]
-  end
-
   defp get_sheet_id("square") do
     "1AC3XNLuCcmUG7iGHzb40zOj4b3_58cUuvA0fP9jtkxg"
-  end
-
-  defp get_sheet_id("queens") do
-    "1XW4sybUwlVPOc6vTliodH3c1t9AdiKBwiPhSbkwUGYM"
   end
 end

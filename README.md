@@ -21,4 +21,4 @@ PROJECT=square  mix start
 - 対象スプレッドシートから必要なマスタデータを回収
 - CSV への出力
 - JSON 形式への整形 までをやります。ローカルで動作確認して、問題なさそうならそのままコミットしちゃいましょう。
-- PROJECT は square か queens が指定可能
+- PROJECT は square のみが指定可能
